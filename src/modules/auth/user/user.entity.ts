@@ -1,3 +1,4 @@
+import { ApiProperty } from '@nestjs/swagger'
 import { Exclude } from 'class-transformer'
 import {
   BaseEntity,
@@ -12,9 +13,11 @@ import { Task } from 'src/modules/tasks/task/task.entity'
 @Entity()
 @Unique(['username'])
 export class User extends BaseEntity {
+  @ApiProperty()
   @PrimaryGeneratedColumn()
   id: number
 
+  @ApiProperty()
   @Column()
   username: string
 

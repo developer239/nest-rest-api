@@ -1,11 +1,11 @@
 import { ConflictException } from '@nestjs/common'
 import { Repository, EntityRepository } from 'typeorm'
-import { CreateDTO } from 'src/modules/auth/user/user.dto'
+import { CreateUserDTO } from 'src/modules/auth/user/user.dto'
 import { User } from 'src/modules/auth/user/user.entity'
 
 @EntityRepository(User)
 export class UserRepository extends Repository<User> {
-  async signUp(createDTO: CreateDTO): Promise<User> {
+  async signUp(createDTO: CreateUserDTO): Promise<User> {
     const user = this.create()
     user.username = createDTO.username
     user.salt = createDTO.salt

@@ -1,3 +1,4 @@
+import { ApiProperty } from '@nestjs/swagger'
 import { Exclude } from 'class-transformer'
 import {
   BaseEntity,
@@ -11,15 +12,19 @@ import { TaskStatus } from 'src/modules/tasks/task/task.types'
 
 @Entity()
 export class Task extends BaseEntity {
+  @ApiProperty()
   @PrimaryGeneratedColumn()
   id: number
 
+  @ApiProperty()
   @Column()
   title: string
 
+  @ApiProperty()
   @Column()
   description: string
 
+  @ApiProperty()
   @Column()
   status: TaskStatus
 
@@ -31,6 +36,7 @@ export class Task extends BaseEntity {
   )
   user: User
 
+  @ApiProperty()
   @Column()
   userId: number
 }
