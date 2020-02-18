@@ -5,8 +5,8 @@ import {
   Column,
   ManyToOne,
 } from 'typeorm'
-import { User } from 'src/modules/auth/entities/user'
-import { TaskStatus } from 'src/modules/tasks/types'
+import { User } from 'src/modules/auth/user/user.entity'
+import { TaskStatus } from 'src/modules/tasks/task/task.types'
 
 @Entity()
 export class Task extends BaseEntity {

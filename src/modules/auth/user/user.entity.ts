@@ -7,7 +7,7 @@ import {
   Unique,
   OneToMany,
 } from 'typeorm'
-import { Task } from 'src/modules/tasks/entities/task'
+import { Task } from 'src/modules/tasks/task/task.entity'
 
 @Entity()
 @Unique(['username'])

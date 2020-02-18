@@ -1,5 +1,5 @@
 import { PipeTransform, BadRequestException } from '@nestjs/common'
-import { TaskStatus } from 'src/modules/tasks/types'
+import { TaskStatus } from 'src/modules/tasks/task/task.types'
 
 export class TaskStatusValidationPipe implements PipeTransform {
   readonly allowedStatuses = [

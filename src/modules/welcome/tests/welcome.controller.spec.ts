@@ -1,16 +1,16 @@
 import { Test, TestingModule } from '@nestjs/testing'
-import { HelloController } from 'src/modules/welcome/controllers/Hello'
+import { WelcomeController } from 'src/modules/welcome/welcome.controller'
 
 describe('[controller] HelloController', () => {
-  let helloController: HelloController
+  let helloController: WelcomeController
 
   beforeEach(async () => {
     const app: TestingModule = await Test.createTestingModule({
-      controllers: [HelloController],
+      controllers: [WelcomeController],
       providers: [],
     }).compile()
 
-    helloController = app.get<HelloController>(HelloController)
+    helloController = app.get<WelcomeController>(WelcomeController)
   })
 
   describe('root', () => {
