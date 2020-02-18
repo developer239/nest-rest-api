@@ -1,3 +1,4 @@
+import { Exclude } from 'class-transformer'
 import {
   BaseEntity,
   Entity,
@@ -22,6 +23,7 @@ export class Task extends BaseEntity {
   @Column()
   status: TaskStatus
 
+  @Exclude()
   @ManyToOne(
     type => User,
     user => user.tasks,

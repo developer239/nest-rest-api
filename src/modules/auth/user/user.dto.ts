@@ -1,4 +1,10 @@
-import { IsString, MinLength, MaxLength, Matches } from 'class-validator'
+import {
+  IsString,
+  MinLength,
+  MaxLength,
+  Matches,
+  IsNotEmpty,
+} from 'class-validator'
 
 export class CredentialsDTO {
   @IsString()
@@ -12,5 +18,16 @@ export class CredentialsDTO {
   @Matches(/((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/u, {
     message: 'password too weak',
   })
+  password: string
+}
+
+export class CreateDTO {
+  @IsNotEmpty()
+  username: string
+
+  @IsNotEmpty()
+  salt: string
+
+  @IsNotEmpty()
   password: string
 }

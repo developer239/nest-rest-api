@@ -20,7 +20,7 @@ import { EnvService } from 'src/modules/env/env.service'
           username: pgUrl.user,
           password: pgUrl.password,
           database: pgUrl.database,
-          entities: [`${__dirname}/../**/entities/*.{js,ts}`],
+          entities: [`${__dirname}/../**/*.entity.{js,ts}`],
           synchronize: true,
         }
       },

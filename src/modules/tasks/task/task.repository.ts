@@ -1,4 +1,3 @@
-import { InternalServerErrorException } from '@nestjs/common'
 import { EntityRepository, Repository } from 'typeorm'
 import { User } from 'src/modules/auth/user/user.entity'
 import { CreateDTO, GetFilterDTO } from 'src/modules/tasks/task/task.dto'
@@ -7,8 +6,8 @@ import { TaskStatus } from 'src/modules/tasks/task/task.types'
 
 @EntityRepository(Task)
 export class TaskRepository extends Repository<Task> {
-  async getTasks(filterDto: GetFilterDTO, user: User): Promise<Task[]> {
-    const { status, search } = filterDto
+  async getTasks(filterDTO: GetFilterDTO, user: User): Promise<Task[]> {
+    const { status, search } = filterDTO
     const query = this.createQueryBuilder('task')
 
     query.where('task.userId = :userId', { userId: user.id })
@@ -24,12 +23,9 @@ export class TaskRepository extends Repository<Task> {
       )
     }
 
-    try {
-      const tasks = await query.getMany()
-      return tasks
-    } catch (error) {
-      throw new InternalServerErrorException()
-    }
+    const tasks = await query.getMany()
+
+    return tasks
   }
 
   async createTask(createDTO: CreateDTO, user: User): Promise<Task> {
@@ -41,13 +37,8 @@ export class TaskRepository extends Repository<Task> {
     task.status = TaskStatus.OPEN
     task.user = user
 
-    try {
-      await task.save()
-    } catch (error) {
-      throw new InternalServerErrorException()
-    }
+    await task.save()
 
-    delete task.user
     return task
   }
 }

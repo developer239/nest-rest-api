@@ -9,18 +9,17 @@ export class TaskStatusValidationPipe implements PipeTransform {
   ]
 
   transform(value: any) {
-    // eslint-disable-next-line no-param-reassign
-    value = value.toUpperCase()
+    const valueUC = value.toUpperCase()
 
-    if (!this.isStatusValid(value)) {
-      throw new BadRequestException(`"${value}" is an invalid status`)
+    if (!this.isStatusValid(valueUC)) {
+      throw new BadRequestException(`"${valueUC}" is an invalid status`)
     }
 
-    return value
+    return valueUC
   }
 
   private isStatusValid(status: any) {
-    const idx = this.allowedStatuses.indexOf(status)
-    return idx !== -1
+    const index = this.allowedStatuses.indexOf(status)
+    return index !== -1
   }
 }

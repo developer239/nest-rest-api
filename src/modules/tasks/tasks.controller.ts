@@ -28,10 +28,10 @@ export class TasksController {
 
   @Get()
   getTasks(
-    @Query(ValidationPipe) filterDto: GetFilterDTO,
+    @Query(ValidationPipe) filterDTO: GetFilterDTO,
     @GetUser() user: User
   ): Promise<Task[]> {
-    return this.tasksService.getTasks(filterDto, user)
+    return this.tasksService.getTasks(filterDTO, user)
   }
 
   @Get('/:id')
@@ -45,17 +45,17 @@ export class TasksController {
   @Post()
   @UsePipes(ValidationPipe)
   createTask(
-    @Body() createTaskDto: CreateDTO,
+    @Body() createDTO: CreateDTO,
     @GetUser() user: User
   ): Promise<Task> {
-    return this.tasksService.createTask(createTaskDto, user)
+    return this.tasksService.createTask(createDTO, user)
   }
 
   @Delete('/:id')
   deleteTask(
     @Param('id', ParseIntPipe) id: number,
     @GetUser() user: User
-  ): Promise<void> {
+  ): Promise<Task> {
     return this.tasksService.deleteTask(id, user)
   }
 

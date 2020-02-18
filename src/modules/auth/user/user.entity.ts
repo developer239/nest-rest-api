@@ -1,4 +1,4 @@
-import * as bcrypt from 'bcryptjs'
+import { Exclude } from 'class-transformer'
 import {
   BaseEntity,
   Entity,
@@ -18,21 +18,19 @@ export class User extends BaseEntity {
   @Column()
   username: string
 
+  @Exclude()
   @Column()
   password: string
 
+  @Exclude()
   @Column()
   salt: string
 
+  @Exclude()
   @OneToMany(
     () => Task,
     task => task.user,
-    { eager: true }
+    { eager: false }
   )
   tasks: Task[]
-
-  async validatePassword(password: string): Promise<boolean> {
-    const hash = await bcrypt.hash(password, this.salt)
-    return hash === this.password
-  }
 }

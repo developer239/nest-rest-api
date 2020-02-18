@@ -13,32 +13,39 @@ export class TasksService {
     private readonly taskRepository: TaskRepository
   ) {}
 
-  getTasks(filterDto: GetFilterDTO, user: User): Promise<Task[]> {
-    return this.taskRepository.getTasks(filterDto, user)
+  getTasks(filterDTO: GetFilterDTO, user: User): Promise<Task[]> {
+    return this.taskRepository.getTasks(filterDTO, user)
   }
 
   async getTaskById(id: number, user: User): Promise<Task> {
-    const found = await this.taskRepository.findOne({
+    const task = await this.taskRepository.findOne({
       where: { id, userId: user.id },
     })
 
-    if (!found) {
-      throw new NotFoundException(`Task with ID "${id}" not found`)
+    if (!task) {
+      throw new NotFoundException(`Task with ID "${id}" not found.`)
     }
 
-    return found
+    return task
   }
 
   createTask(createDTO: CreateDTO, user: User): Promise<Task> {
     return this.taskRepository.createTask(createDTO, user)
   }
 
-  async deleteTask(id: number, user: User): Promise<void> {
-    const result = await this.taskRepository.delete({ id, userId: user.id })
+  async deleteTask(id: number, user: User): Promise<Task> {
+    const task = await this.getTaskById(id, user)
 
-    if (result.affected === 0) {
-      throw new NotFoundException(`Task with ID "${id}" not found`)
+    const deleteResult = await this.taskRepository.delete({
+      id,
+      userId: user.id,
+    })
+
+    if (deleteResult.affected === 0) {
+      throw new NotFoundException(`Task with ID "${id}" not found.`)
     }
+
+    return task
   }
 
   async updateTaskStatus(
@@ -46,9 +53,17 @@ export class TasksService {
     status: TaskStatus,
     user: User
   ): Promise<Task> {
+    const updateResult = await this.taskRepository.update(
+      { id, userId: user.id },
+      { status }
+    )
+
+    if (updateResult.affected === 0) {
+      throw new NotFoundException(`Task with ID "${id}" not found.`)
+    }
+
     const task = await this.getTaskById(id, user)
-    task.status = status
-    await task.save()
+
     return task
   }
 }
