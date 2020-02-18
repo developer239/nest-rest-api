@@ -11,6 +11,7 @@ import { EnvService } from 'src/modules/env/services/Env'
 
 @Module({
   imports: [
+    EnvModule,
     PassportModule.register({ defaultStrategy: 'jwt' }),
     JwtModule.registerAsync({
       imports: [EnvModule],

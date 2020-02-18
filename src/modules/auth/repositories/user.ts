@@ -1,5 +1,5 @@
 import { ConflictException, InternalServerErrorException } from '@nestjs/common'
-import bcrypt from 'bcryptjs'
+import * as bcrypt from 'bcryptjs'
 import { Repository, EntityRepository } from 'typeorm'
 import { CredentialsDTO } from 'src/modules/auth/dtos/user'
 import { User } from 'src/modules/auth/entities/user'
@@ -15,6 +15,7 @@ export class UserRepository extends Repository<User> {
     user.password = await this.hashPassword(password, user.salt)
 
     try {
+      // TODO: doesn't return anything and hangs
       await user.save()
     } catch (error) {
       if (error.code === '23505') {
