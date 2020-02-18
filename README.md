@@ -2,6 +2,10 @@
 
 ## Nest Rest Api
 
+Demo application [is running here](https://nest-rest-api.herokuapp.com/) (it might take a while before the free server wakes up)
+
+📘 API is documented [here](https://nest-rest-api.herokuapp.com/api).
+
 ### Development
 
 1. Start development server: `yarn start:dev`
