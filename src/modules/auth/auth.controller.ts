@@ -3,7 +3,6 @@ import { ApiOkResponse, ApiTags } from '@nestjs/swagger'
 import { CredentialsDTO } from 'src/modules/auth/user/user.dto'
 import { User } from 'src/modules/auth/user/user.entity'
 import { UserService } from 'src/modules/auth/user/user.service'
-import { LoginResponse } from 'src/modules/auth/user/user.types'
 
 @ApiTags('Auth')
 @Controller('auth')
@@ -21,12 +20,17 @@ export class AuthController {
   }
 
   @ApiOkResponse({
-    type: LoginResponse,
+    schema: {
+      type: 'object',
+      properties: {
+        accessToken: { type: 'string' },
+      },
+    },
   })
   @Post('/signin')
   signIn(
     @Body(ValidationPipe) authCredentialsDto: CredentialsDTO
-  ): Promise<LoginResponse> {
+  ): Promise<{ accessToken: string }> {
     return this.userService.signIn(authCredentialsDto)
   }
 }
