@@ -13,6 +13,13 @@
     "YARN_PRODUCTION": {
       "description": "We want to keep dev dependencies.",
       "value": "false"
+    },
+    "JWT_EXPIRES": {
+      "value": 3600
+    },
+    "JWT_SECRET": {
+      "description": "A secret key for generating safe passwords.",
+      "generator": "secret"
     }
   },
   "addons": [
