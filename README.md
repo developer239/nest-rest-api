@@ -1,6 +1,6 @@
 [![TypeScript](https://badges.frapsoft.com/typescript/version/typescript-next.svg?v=101)](https://www.typescriptlang.org/)
 
-## Nest Rest Api
+## Nest REST API
 
 Demo application [is running here](https://nest-rest-api.herokuapp.com/) (it might take a while before the free server wakes up)
 
