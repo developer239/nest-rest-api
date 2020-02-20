@@ -6,17 +6,16 @@ Demo application [is running here](https://nest-rest-api.herokuapp.com/) (it mig
 
 📘 API is documented [here](https://nest-rest-api.herokuapp.com/api).
 
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+
 ### Development
 
 1. Start development server: `yarn start:dev`
 
-### Development
+### Useful Commands
 
 1. `yarn test` runs jest
 2. `yarn start:debug` start debug server
-
-#### Useful Commands
-
 - `yarn format` Prettify source code
 - `yarn lint:ts` Show ts errors
 
