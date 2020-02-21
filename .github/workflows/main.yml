@@ -35,7 +35,8 @@ jobs:
           postgresql password: secretPassword
           postgresql port: 5432
 
-      - uses: paambaati/codeclimate-action@v2.2.4
+      - name: Test & publish code coverage
+        uses: paambaati/codeclimate-action@v2.4.0
         env:
           # set to test when https://github.com/CasperWA/postgresql-action/pull/2 merged
           NODE_ENV: ci
