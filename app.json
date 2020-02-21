@@ -15,7 +15,7 @@
       "value": "false"
     },
     "JWT_EXPIRES": {
-      "value": 3600
+      "value": "3600"
     },
     "JWT_SECRET": {
       "description": "A secret key for generating safe passwords.",
