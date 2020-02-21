@@ -100,7 +100,7 @@ describe('[service] TaskService', () => {
       expect(task).toMatchObject({
         title: createDTO.title,
         description: createDTO.description,
-        status: 'something',
+        status: TaskStatus.OPEN,
       })
     })
   })
