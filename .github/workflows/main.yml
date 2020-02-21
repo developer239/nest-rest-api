@@ -22,6 +22,11 @@ jobs:
           path: node_modules
           key: node-modules-${{ hashFiles('**/yarn.lock') }}
 
+      - name: Setup Code Climate test-reporter
+        run: |
+          curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+          chmod +x ./cc-test-reporter
+
       - name: Install Dependencies
         if: steps.cache.outputs.cache-hit != 'true'
         run: yarn install
@@ -35,8 +40,8 @@ jobs:
           postgresql password: secretPassword
           postgresql port: 5432
 
-      - name: Run Tests
-        run: npm run test
-        env:
-          # set to test when https://github.com/CasperWA/postgresql-action/pull/2 merged
-          NODE_ENV: ci
+      - name: Run Tests and Coverage
+        run: |
+          ./cc-test-reporter before-build
+          npm run test:cov
+          ./cc-test-reporter after-build --exit-code $?
