@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common'
 import { ConfigModule } from '@nestjs/config'
 import { EnvService } from 'src/modules/env/env.service'
 
-type TNodeEnv = 'development' | 'test' | 'production'
+type TNodeEnv = 'development' | 'test' | 'production' | 'ci'
 
 const getEnvFilePath = (nodeEnv?: TNodeEnv) => {
   switch (nodeEnv) {
@@ -10,6 +10,8 @@ const getEnvFilePath = (nodeEnv?: TNodeEnv) => {
       return '.env.development'
     case 'test':
       return '.env.test'
+    case 'ci':
+      return '.env.ci'
     default: {
       return undefined
     }
