@@ -1,4 +1,5 @@
 [![TypeScript](https://badges.frapsoft.com/typescript/version/typescript-next.svg?v=101)](https://www.typescriptlang.org/)
+[![Dependabot](https://badgen.net/dependabot/developer239/nest-rest-api/241242706?icon=dependabot)](https://dependabot.com/)
 
 ## Nest REST API
 
