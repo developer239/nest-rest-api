@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-floating-promises */
 import { NestFactory } from '@nestjs/core'
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger'
 import { AppModule } from 'src/app.module'
@@ -21,5 +22,4 @@ async function bootstrap() {
   await app.listen(envConfig.getInt('PORT'))
 }
 
-// eslint-disable-next-line
 bootstrap()

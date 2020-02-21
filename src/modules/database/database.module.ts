@@ -13,7 +13,7 @@ import { EnvService } from 'src/modules/env/env.service'
         const pgUrl = parse(envService.getString('DATABASE_URL'))
 
         return {
-          logging: true,
+          logging: process.env.NODE_ENV !== 'test',
           type: 'postgres',
           host: pgUrl.host,
           port: Number(pgUrl.port),
