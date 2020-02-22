@@ -1,7 +1,7 @@
 import {
-  ForbiddenException,
   Injectable,
   NotFoundException,
+  UnauthorizedException,
 } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
 import { User } from 'src/modules/auth/user/user.entity'
@@ -69,7 +69,7 @@ export class TasksService {
     )
 
     if (updateResult.affected === 0) {
-      throw new ForbiddenException()
+      throw new UnauthorizedException()
     }
 
     return this.getTaskById(id, user)
