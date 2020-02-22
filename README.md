@@ -9,7 +9,27 @@ Demo application [is running here](https://nest-rest-api.herokuapp.com/) (it mig
 
 📘 API is documented [here](https://nest-rest-api.herokuapp.com/api).
 
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+The core code of this application was generated automatically by [create-opinionated-app](https://github.com/developer239/create-opinionated-app).
+
+### Example Features
+
+**Configuration**
+- [x] Basic Project Setup
+- [x] Environment Variables
+- [x] Database (TODO: migrations)
+- [x] Tests
+
+
+**Features**
+- [x] Authorization (TODO: refresh token)
+- [x] Health Check
+- [x] Basic CRUD operations
+- [x] Documentation
+- [ ] In-memory Cache
+
+**Deployment**
+- [x] Heroku CD
+- [x] GitHub Actions CI
 
 ### Development
 
@@ -17,14 +37,16 @@ Demo application [is running here](https://nest-rest-api.herokuapp.com/) (it mig
 
 ### Useful Commands
 
-1. `yarn test` runs jest
-2. `yarn start:debug` start debug server
+- `yarn test` runs jest
+- `yarn start:debug` start debug server
 - `yarn format` Prettify source code
 - `yarn lint:ts` Show ts errors
 
 ## Deployment on Heroku
 
 This application is Heroku ready.
+
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
 1. Install Heroku CLI: `brew tap heroku/brew && brew install heroku`
 2. Login: `heroku login`
