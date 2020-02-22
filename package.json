@@ -12,9 +12,9 @@
     "start:dev": "NODE_ENV=development nest start --watch",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:cov": "jest --coverage",
+    "test": "jest -i",
+    "test:watch": "jest --watch -i",
+    "test:cov": "jest --coverage -i",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "lint:ts": "eslint --ext .ts,.tsx src",
     "heroku-postbuild": "npm run build"
