@@ -1,3 +1,4 @@
+/* eslint-disable max-lines-per-function */
 import { TestingModule } from '@nestjs/testing'
 import { AuthTestingEntityService } from 'src/modules/auth/testing-entity.service'
 import { CreateTaskDTO, GetFilterDTO } from 'src/modules/tasks/task/task.dto'
@@ -96,11 +97,75 @@ describe('[service] TaskService', () => {
       }
 
       const task = await tasksService.createTask(createDTO, user)
+      const tasks = await taskEntity.listTasks()
 
       expect(task).toMatchObject({
         title: createDTO.title,
         description: createDTO.description,
         status: TaskStatus.OPEN,
+      })
+      expect(tasks).toHaveLength(1)
+    })
+  })
+
+  describe('deleteTask', () => {
+    it('should delete task', async () => {
+      const user = await authEntity.createUser()
+      const task = await taskEntity.createTask(user)
+
+      await tasksService.deleteTask(task.id, user)
+
+      const tasks = await taskEntity.listTasks()
+      expect(tasks).toHaveLength(0)
+    })
+
+    describe('when deleting other peoples tasks', () => {
+      it('should not delete task', async () => {
+        const user = await authEntity.createUser()
+        const task = await taskEntity.createTask(user)
+        const otherUser = await authEntity.createUser()
+
+        const deleteTask = tasksService.deleteTask(task.id, otherUser)
+
+        await expect(deleteTask).rejects.toBeTruthy()
+      })
+    })
+  })
+
+  describe('updateTaskStatus', () => {
+    it('should update task status', async () => {
+      const expectedStatus = TaskStatus.DONE
+      const user = await authEntity.createUser()
+      const task = await taskEntity.createTask(user, {
+        status: TaskStatus.OPEN,
+      })
+
+      const updatedTask = await tasksService.updateTaskStatus(
+        task.id,
+        expectedStatus,
+        user
+      )
+      const tasks = await taskEntity.listTasks()
+
+      expect(tasks[0].status).toStrictEqual(expectedStatus)
+      expect(updatedTask.status).toStrictEqual(expectedStatus)
+    })
+
+    describe('when updating other peoples tasks', () => {
+      it('should not update task status', async () => {
+        const expectedStatus = TaskStatus.DONE
+        const user = await authEntity.createUser()
+        const task = await taskEntity.createTask(user, {
+          status: TaskStatus.OPEN,
+        })
+        const otherUser = await authEntity.createUser()
+
+        const updateTask = tasksService.updateTaskStatus(
+          task.id,
+          expectedStatus,
+          otherUser
+        )
+        await expect(updateTask).rejects.toBeTruthy()
       })
     })
   })

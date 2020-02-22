@@ -23,4 +23,8 @@ export class TasksTestingEntityService extends TestingEntityService {
 
     return tasks
   }
+
+  public listTasks() {
+    return this.list<Task>('task')
+  }
 }

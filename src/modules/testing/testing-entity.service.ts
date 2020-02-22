@@ -1,12 +1,14 @@
 /* eslint-disable security/detect-object-injection */
-import { Injectable } from '@nestjs/common'
+import { Inject, Injectable } from '@nestjs/common'
 import { classToClass } from 'class-transformer'
-import { BaseEntity } from 'typeorm'
+import { BaseEntity, Connection } from 'typeorm'
 
 type IConstructorOf<TEntity> = new () => TEntity
 
 @Injectable()
 export class TestingEntityService {
+  constructor(@Inject('Connection') public connection: Connection) {}
+
   public async create<TEntity extends BaseEntity, TData>(
     model: IConstructorOf<TEntity>,
     data?: TData
@@ -20,5 +22,11 @@ export class TestingEntityService {
     await instance.save()
 
     return classToClass(instance)
+  }
+
+  public list<TEntity extends BaseEntity>(
+    entityClass: string
+  ): Promise<TEntity[]> {
+    return this.connection.manager.find<TEntity>(entityClass)
   }
 }
