@@ -7,10 +7,13 @@ import { AuthTestingEntityService } from 'src/modules/auth/testing-entity.servic
 import { UserService } from 'src/modules/auth/user/user.service'
 import { TasksTestingEntityService } from 'src/modules/tasks/testing-entity.service'
 import { bootstrap } from 'src/modules/testing/main'
+import { TestingDatabaseService } from 'src/modules/testing/testing-database.service'
 
 describe('[service] UserService', () => {
   let userService: UserService
+  let databaseService: TestingDatabaseService
   let cryptoService: CryptoService
+
   let authEntity: AuthTestingEntityService
 
   beforeAll(async () => {
@@ -20,8 +23,14 @@ describe('[service] UserService', () => {
     })
 
     userService = app.get<UserService>(UserService)
-    authEntity = app.get<AuthTestingEntityService>(AuthTestingEntityService)
+    databaseService = app.get<TestingDatabaseService>(TestingDatabaseService)
     cryptoService = app.get<CryptoService>(CryptoService)
+
+    authEntity = app.get<AuthTestingEntityService>(AuthTestingEntityService)
+  })
+
+  afterEach(async () => {
+    await databaseService.clearDb()
   })
 
   describe('signUp', () => {

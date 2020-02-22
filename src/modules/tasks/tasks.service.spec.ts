@@ -7,9 +7,11 @@ import { TasksModule } from 'src/modules/tasks/tasks.module'
 import { TasksService } from 'src/modules/tasks/tasks.service'
 import { TasksTestingEntityService } from 'src/modules/tasks/testing-entity.service'
 import { bootstrap } from 'src/modules/testing/main'
+import { TestingDatabaseService } from 'src/modules/testing/testing-database.service'
 
 describe('[service] TaskService', () => {
   let tasksService: TasksService
+  let databaseService: TestingDatabaseService
   let authEntity: AuthTestingEntityService
   let taskEntity: TasksTestingEntityService
 
@@ -20,9 +22,14 @@ describe('[service] TaskService', () => {
     })
 
     tasksService = app.get<TasksService>(TasksService)
+    databaseService = app.get<TestingDatabaseService>(TestingDatabaseService)
 
     authEntity = app.get<AuthTestingEntityService>(AuthTestingEntityService)
     taskEntity = app.get<TasksTestingEntityService>(TasksTestingEntityService)
+  })
+
+  afterEach(async () => {
+    await databaseService.clearDb()
   })
 
   describe('getTasks', () => {
