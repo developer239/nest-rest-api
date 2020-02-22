@@ -1,4 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger'
+import * as bcrypt from 'bcryptjs'
 import { Exclude } from 'class-transformer'
 import * as faker from 'faker'
 import * as R from 'ramda'
@@ -40,12 +41,12 @@ export class User extends BaseEntity {
   )
   tasks: Task[]
 
-  public static getTestData(data?: IUserTestData, tasks?: Task[]) {
+  public static async getTestData(data?: IUserTestData, tasks?: Task[]) {
     return R.merge(
       {
         username: faker.internet.userName(),
         password: faker.internet.password(),
-        salt: faker.random.uuid(),
+        salt: await bcrypt.genSalt(),
         tasks,
       },
       data
