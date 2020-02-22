@@ -1,4 +1,4 @@
-[![TypeScript](https://badges.frapsoft.com/typescript/version/typescript-next.svg?v=101)](https://www.typescriptlang.org/)
+![CI](https://github.com/developer239/nest-rest-api/workflows/CI/badge.svg)
 [![Dependabot](https://badgen.net/dependabot/developer239/nest-rest-api/241242706?icon=dependabot)](https://dependabot.com/)
 [![Maintainability](https://api.codeclimate.com/v1/badges/ae13e67516a18ad471b0/maintainability)](https://codeclimate.com/github/developer239/nest-rest-api/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/ae13e67516a18ad471b0/test_coverage)](https://codeclimate.com/github/developer239/nest-rest-api/test_coverage)
