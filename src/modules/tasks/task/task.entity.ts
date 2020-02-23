@@ -4,13 +4,14 @@ import * as faker from 'faker'
 import * as R from 'ramda'
 import {
   BaseEntity,
-  Entity,
-  PrimaryGeneratedColumn,
   Column,
+  Entity,
   ManyToOne,
+  PrimaryGeneratedColumn,
+  BeforeInsert,
 } from 'typeorm'
 import { User } from 'src/modules/auth/user/user.entity'
-import { TaskStatus, ITaskTestData } from 'src/modules/tasks/task/task.types'
+import { ITaskTestData, TaskStatus } from 'src/modules/tasks/task/task.types'
 
 @Entity()
 export class Task extends BaseEntity {
@@ -53,5 +54,10 @@ export class Task extends BaseEntity {
       },
       data
     )
+  }
+
+  @BeforeInsert()
+  beforeInsertDates() {
+    this.status = this.status ?? TaskStatus.OPEN
   }
 }

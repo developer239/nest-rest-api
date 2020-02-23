@@ -12,9 +12,9 @@ export const bootstrap = async (metadata: ModuleMetadata) => {
       TestingModule,
       ...(metadata.imports ? metadata.imports : []),
     ],
-    controllers: [...(metadata.controllers ? metadata.controllers : [])],
-    providers: [...(metadata.providers ? metadata.providers : [])],
-    exports: [...(metadata.exports ? metadata.exports : [])],
+    controllers: [...(metadata?.controllers ?? [])],
+    providers: [...(metadata?.providers ?? [])],
+    exports: [...(metadata?.exports ?? [])],
   }).compile()
 
   return testingModule
