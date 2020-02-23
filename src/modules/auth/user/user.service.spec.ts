@@ -4,6 +4,7 @@ import * as bcrypt from 'bcryptjs'
 import { AuthModule } from 'src/modules/auth/auth.module'
 import { CryptoService } from 'src/modules/auth/crypto/crypto.service'
 import { AuthTestingEntityService } from 'src/modules/auth/testing-entity.service'
+import { User } from 'src/modules/auth/user/user.entity'
 import { UserService } from 'src/modules/auth/user/user.service'
 import { TasksTestingEntityService } from 'src/modules/tasks/testing-entity.service'
 import { bootstrap } from 'src/modules/testing/main'
@@ -35,9 +36,7 @@ describe('[service] UserService', () => {
 
   describe('signUp', () => {
     it('should create new user', async () => {
-      const salt = await bcrypt.genSalt()
-      const username = 'some-username'
-      const password = 'some-password'
+      const { username, password, salt } = await User.getTestData()
       const passwordHashed = cryptoService.hashPassword(password, salt)
 
       // @ts-ignore
@@ -57,9 +56,7 @@ describe('[service] UserService', () => {
 
   describe('signIn', () => {
     it('should sign in', async () => {
-      const salt = await bcrypt.genSalt()
-      const username = 'some-username'
-      const password = 'some-password'
+      const { username, password, salt } = await User.getTestData()
       const passwordHashed = await cryptoService.hashPassword(password, salt)
       await authEntity.createUser({ username, password: passwordHashed, salt })
 
@@ -70,8 +67,7 @@ describe('[service] UserService', () => {
 
     describe('when invalid credentials', () => {
       it('should throw error', async () => {
-        const username = 'some-username'
-        const password = 'some-password' // not hashed
+        const { username, password } = await User.getTestData()
         await authEntity.createUser({ username })
 
         const singIn = userService.signIn({ username, password })
