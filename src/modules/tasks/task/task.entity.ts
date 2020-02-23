@@ -57,7 +57,7 @@ export class Task extends BaseEntity {
   }
 
   @BeforeInsert()
-  beforeInsertDates() {
+  beforeInsertTask() {
     this.status = this.status ?? TaskStatus.OPEN
   }
 }
