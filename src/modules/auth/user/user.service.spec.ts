@@ -37,7 +37,7 @@ describe('[service] UserService', () => {
   describe('signUp', () => {
     it('should create new user', async () => {
       const { username, password, salt } = await User.getTestData()
-      const passwordHashed = cryptoService.hashPassword(password, salt)
+      const passwordHashed = await cryptoService.hashPassword(password, salt)
 
       // @ts-ignore
       jest.spyOn(bcrypt, 'genSalt').mockReturnValue(salt)
