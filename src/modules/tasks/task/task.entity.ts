@@ -33,7 +33,7 @@ export class Task extends BaseEntity {
 
   @Exclude()
   @ManyToOne(
-    type => User,
+    () => User,
     user => user.tasks,
     { eager: false }
   )

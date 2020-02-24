@@ -1,4 +1,4 @@
-/* eslint-disable security/detect-object-injection,no-await-in-loop */
+/* eslint-disable security/detect-object-injection,no-await-in-loop,unused-imports/no-unused-vars-ts,unused-imports/no-unused-vars */
 import { Injectable } from '@nestjs/common'
 import { User } from 'src/modules/auth/user/user.entity'
 import { Task } from 'src/modules/tasks/task/task.entity'
@@ -16,7 +16,7 @@ export class TasksTestingEntityService extends TestingEntityService {
   public async createTasks(count: number, user?: User) {
     const tasks = []
 
-    for (const cycle of Array(count)) {
+    for (const _ of Array(count)) {
       const task = await this.create(Task, Task.getTestData(user))
       tasks.push(task)
     }
