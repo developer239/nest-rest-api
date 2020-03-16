@@ -52,7 +52,7 @@
     "@code-quality/eslint-config-typescript": "^1.8.0",
     "@code-quality/prettier-config": "^2.1.0",
     "@commitlint/cli": "^8.3.5",
-    "@nestjs/cli": "^6.13.2",
+    "@nestjs/cli": "^7.0.0",
     "@nestjs/schematics": "^6.8.1",
     "@nestjs/testing": "^6.11.8",
     "@types/bcryptjs": "^2.4.2",
