@@ -54,3 +54,4 @@ This application is Heroku ready.
 4. Create new project on Heroku `heroku create`
 
 You can find more information [here](https://devcenter.heroku.com/articles/heroku-cli).
+
