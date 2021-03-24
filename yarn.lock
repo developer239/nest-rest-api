@@ -625,9 +625,9 @@
     strip-json-comments "^3.1.1"
 
 "@godaddy/terminus@^4.3.1":
-  version "4.7.0"
-  resolved "https://registry.yarnpkg.com/@godaddy/terminus/-/terminus-4.7.0.tgz#1ad112a8304162eb7846f06721ae2722d0c0d5c4"
-  integrity sha512-6zrHP0AiKe5iPo9SSH9rYMbfaI5hLBJjBjga76qVvYoiqYfAyoDLyNnFR2zmSzZCIhDZGKF/C8CvL9wHoQ1q8w==
+  version "4.7.1"
+  resolved "https://registry.yarnpkg.com/@godaddy/terminus/-/terminus-4.7.1.tgz#f4b850617923e00f7080c64f2c97d653e4eea66a"
+  integrity sha512-WA1UpDIUvEJ6pMIlgXrzXkAjHdt33G+j7074MLppZ1b2uN8OaH/QKo5zrASrLCWuczwS31t69aMtqiPWN3ruBA==
   dependencies:
     stoppable "^1.1.0"
 
