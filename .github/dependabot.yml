@@ -1,0 +1,26 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: "@nestjs/config"
+    versions:
+    - ">= 0"
+  - dependency-name: husky
+    versions:
+    - 5.1.2
+  - dependency-name: eslint
+    versions:
+    - 7.21.0
+  - dependency-name: "@types/node"
+    versions:
+    - 15.0.0
+  - dependency-name: pg-connection-string
+    versions:
+    - 2.5.0
+  - dependency-name: "@types/jest"
+    versions:
+    - 26.0.21
