@@ -1,10 +1,6 @@
 {
   "name": "Nest Rest Api",
-  "keywords": [
-    "node",
-    "nest",
-    "typescript"
-  ],
+  "keywords": ["node", "nest", "typescript"],
   "env": {
     "NODE_ENV": {
       "description": "We want to run the app in production mode.",
@@ -22,7 +18,5 @@
       "generator": "secret"
     }
   },
-  "addons": [
-    "heroku-postgresql"
-  ]
+  "addons": ["heroku-postgresql"]
 }

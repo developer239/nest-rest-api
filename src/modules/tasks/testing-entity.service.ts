@@ -1,11 +1,11 @@
-/* eslint-disable security/detect-object-injection,no-await-in-loop,unused-imports/no-unused-vars-ts,unused-imports/no-unused-vars */
+/* eslint-disable no-await-in-loop */
 import { Injectable } from '@nestjs/common'
 import { User } from 'src/modules/auth/user/user.entity'
 import { Task } from 'src/modules/tasks/task/task.entity'
 import { ITaskTestData } from 'src/modules/tasks/task/task.types'
 import { TestingEntityService } from 'src/modules/testing/testing-entity.service'
 
-type IConstructorOf<TEntity> = new () => TEntity
+export type IConstructorOf<TEntity> = new () => TEntity
 
 @Injectable()
 export class TasksTestingEntityService extends TestingEntityService {

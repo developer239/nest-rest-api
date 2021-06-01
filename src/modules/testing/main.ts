@@ -1,3 +1,4 @@
+/* eslint-disable node/exports-style */
 import { ModuleMetadata } from '@nestjs/common/interfaces'
 import { Test } from '@nestjs/testing'
 import { DatabaseModule } from 'src/modules/database/database.module'

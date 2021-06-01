@@ -14,6 +14,6 @@ export class TransformInterceptor implements NestInterceptor {
     context: ExecutionContext,
     next: CallHandler
   ): Observable<Response> {
-    return next.handle().pipe(map(data => classToPlain(data) as any))
+    return next.handle().pipe(map((data) => classToPlain(data) as any))
   }
 }

@@ -32,11 +32,7 @@ export class Task extends BaseEntity {
   status: TaskStatus
 
   @Exclude()
-  @ManyToOne(
-    () => User,
-    user => user.tasks,
-    { eager: false }
-  )
+  @ManyToOne(() => User, (user) => user.tasks, { eager: false })
   user: User
 
   @ApiProperty()

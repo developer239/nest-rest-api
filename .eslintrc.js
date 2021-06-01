@@ -1,8 +1,8 @@
 module.exports = {
   extends: [
-    '@code-quality/eslint-config-node',
-    '@code-quality/eslint-config-typescript',
-    '@code-quality/eslint-config-jest',
+    '@linters/eslint-config-node',
+    '@linters/eslint-config-typescript',
+    '@linters/eslint-config-jest',
     'prettier',
-  ],
+  ]
 }

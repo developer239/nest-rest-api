@@ -1,1 +1,5 @@
-module.exports = { extends: ['@code-quality/commitlint-config'] }
+module.exports = {
+  extends: [
+    '@linters/commitlint-config',
+  ],
+}

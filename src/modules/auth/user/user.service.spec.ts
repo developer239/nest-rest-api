@@ -1,4 +1,3 @@
-/* eslint-disable max-lines-per-function */
 import { TestingModule } from '@nestjs/testing'
 import * as bcrypt from 'bcryptjs'
 import { AuthModule } from 'src/modules/auth/auth.module'

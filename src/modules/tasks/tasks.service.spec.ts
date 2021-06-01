@@ -123,6 +123,7 @@ describe('[service] TaskService', () => {
       await tasksService.deleteTask(task.id, user)
 
       const tasks = await taskEntity.listTasks()
+
       expect(tasks).toHaveLength(0)
     })
 

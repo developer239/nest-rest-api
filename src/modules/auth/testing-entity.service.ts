@@ -3,7 +3,7 @@ import { User } from 'src/modules/auth/user/user.entity'
 import { IUserTestData } from 'src/modules/auth/user/user.types'
 import { TestingEntityService } from 'src/modules/testing/testing-entity.service'
 
-type IConstructorOf<TEntity> = new () => TEntity
+export type IConstructorOf<TEntity> = new () => TEntity
 
 @Injectable()
 export class AuthTestingEntityService extends TestingEntityService {

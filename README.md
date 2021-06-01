@@ -14,20 +14,22 @@ The core code of this application was generated automatically by [create-opinion
 ### Example Features
 
 **Configuration**
+
 - [x] Basic Project Setup
 - [x] Environment Variables
 - [x] Database (TODO: migrations)
 - [x] Tests
 
-
 **Features**
+
 - [x] Authorization (TODO: refresh token)
-- [x] Health Check
+- [ ] Health Check
 - [x] Basic CRUD operations
 - [x] Documentation
 - [ ] In-memory Cache
 
 **Deployment**
+
 - [x] Heroku CD
 - [x] GitHub Actions CI
 
@@ -54,4 +56,3 @@ This application is Heroku ready.
 4. Create new project on Heroku `heroku create`
 
 You can find more information [here](https://devcenter.heroku.com/articles/heroku-cli).
-

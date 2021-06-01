@@ -3,7 +3,7 @@ import { JwtService } from '@nestjs/jwt'
 import { InjectRepository } from '@nestjs/typeorm'
 import * as bcrypt from 'bcryptjs'
 import { CryptoService } from 'src/modules/auth/crypto/crypto.service'
-import { JwtPayload } from 'src/modules/auth/jwt/jwt.types'
+import { IJwtPayload } from 'src/modules/auth/jwt/jwt.types'
 import { CredentialsDTO } from 'src/modules/auth/user/user.dto'
 import { User } from 'src/modules/auth/user/user.entity'
 import { UserRepository } from 'src/modules/auth/user/user.repository'
@@ -50,7 +50,7 @@ export class UserService {
       throw new UnauthorizedException('Invalid credentials')
     }
 
-    const payload: JwtPayload = { username: credentialsDTO.username }
+    const payload: IJwtPayload = { username: credentialsDTO.username }
     const accessToken = this.jwtService.sign(payload)
 
     return { accessToken }

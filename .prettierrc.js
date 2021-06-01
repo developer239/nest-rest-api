@@ -1,1 +1,1 @@
-module.exports = require('@code-quality/prettier-config')
+module.exports = require('@linters/prettier-config')

@@ -34,11 +34,7 @@ export class User extends BaseEntity {
   salt: string
 
   @Exclude()
-  @OneToMany(
-    () => Task,
-    task => task.user,
-    { eager: false }
-  )
+  @OneToMany(() => Task, (task) => task.user, { eager: false })
   tasks: Task[]
 
   public static async getTestData(data?: IUserTestData, tasks?: Task[]) {
