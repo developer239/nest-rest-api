@@ -20,7 +20,7 @@ import { EnvService } from 'src/modules/env/env.service'
       useFactory: (envService: EnvService) => ({
         secret: envService.getString('JWT_SECRET'),
         signOptions: {
-          expiresIn: envService.getInt('JWT_EXPIRES'),
+          expiresIn: envService.getNumber('JWT_EXPIRES'),
         },
       }),
     }),

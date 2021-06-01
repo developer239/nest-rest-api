@@ -18,7 +18,7 @@ async function bootstrap() {
   SwaggerModule.setup('api', app, document)
 
   const envConfig = app.get<EnvService>('EnvService')
-  await app.listen(envConfig.getInt('PORT'))
+  await app.listen(envConfig.getNumber('PORT'))
 }
 
 // eslint-disable-next-line @typescript-eslint/no-floating-promises

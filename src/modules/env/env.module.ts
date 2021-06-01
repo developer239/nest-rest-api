@@ -4,19 +4,8 @@ import { EnvService } from 'src/modules/env/env.service'
 
 type TNodeEnv = 'development' | 'test' | 'production' | 'ci'
 
-const getEnvFilePath = (nodeEnv?: TNodeEnv) => {
-  switch (nodeEnv) {
-    case 'development':
-      return '.env.development'
-    case 'test':
-      return '.env.test'
-    case 'ci':
-      return '.env.ci'
-    default: {
-      return undefined
-    }
-  }
-}
+const getEnvFilePath = (nodeEnv?: TNodeEnv) =>
+  `.env.${nodeEnv}`
 
 @Module({
   imports: [
