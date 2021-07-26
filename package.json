@@ -47,7 +47,7 @@
     "typeorm": "0.2.34"
   },
   "devDependencies": {
-    "@commitlint/cli": "12.1.4",
+    "@commitlint/cli": "13.1.0",
     "@linters/commitlint-config": "^1.5.1",
     "@linters/eslint-config-jest": "^1.8.2",
     "@linters/eslint-config-node": "^1.8.6",
